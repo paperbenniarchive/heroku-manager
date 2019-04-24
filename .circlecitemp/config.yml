@@ -1,0 +1,22 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: paperbenni/heroku
+    steps:
+      - run:
+          name: sheepit
+          command: bash start.sh
+workflows:
+   version: 2
+   nightly:
+     triggers:
+       - schedule:
+           cron: "* 0 * * *"
+           filters:
+             branches:
+               only:
+                 - master
+                 - beta
+     jobs:
+       - build

@@ -14,6 +14,7 @@ fi
 hlogin "$HMAIL1" "$HPASS1"
 
 HTIME1=$(htime "$HAPP1")
+
 if [ "$HTIME1" = "100" ]; then
     echo "$HMAIL1 fully used, changing to $HMAIL2"
     sleep 5
