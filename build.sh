@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-docker build -t paperbenni/heroku .
-docker push paperbenni/heroku
+docker build -t paperbenni/herokumanager .
+docker push paperbenni/herokumanager

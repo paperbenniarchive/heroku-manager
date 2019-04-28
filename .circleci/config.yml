@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: paperbenni/heroku
+      - image: paperbenni/herokumanager
     steps:
       - run:
           name: heroku
