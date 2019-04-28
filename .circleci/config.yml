@@ -6,7 +6,7 @@ jobs:
     steps:
       - run:
           name: heroku
-          command: bash start.sh
+          command:  /home/user/start.sh
 workflows:
    version: 2
    nightly:

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+cd ~/
+
 source <(curl -s https://raw.githubusercontent.com/paperbenni/bash/master/import.sh)
 pb heroku/login
 pb heroku
