@@ -1,15 +1,10 @@
 # heroku-manager
 manages a heroku app using two accounts.
-# Run this docker image once a day using the following variables
+# Run this docker image once a day using the following variable
+HLINK
 
-- The credentials of the first account
-  HMAIL1
-  HPASS1
-- The name of app on the first account
-  HAPP1
+A link to a plain text file containing lines with the following syntax:
 
-- The credentials of the second account
-  HMAIL2
-  HPASS2
-- The name of app on the second account
-  HAPP2
+```
+my@email1.com:password1//appname1,my@email2.com:password2//appname2
+```
