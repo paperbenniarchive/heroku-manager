@@ -13,4 +13,4 @@ install:
   - echo starting
 
 script:
-  - docker run --name "test" -e HMAIL1=$HEROKUMAIL1 -e HMAIL2=$HEROKUMAIL2 -e HPASS1=$HEROKUPASS1 -e HPASS2=$HEROKUPASS2 -e HAPP1=$HEROKUAPP1 -e HAPP2=$HEROKUAPP2 paperbenni/heroku
+  - docker run --name "test" -e HAPP2=$LINK paperbenni/herokumanager

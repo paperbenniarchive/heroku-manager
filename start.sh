@@ -6,6 +6,12 @@ source <(curl -s https://raw.githubusercontent.com/paperbenni/bash/master/import
 pb heroku/login
 pb heroku
 
+if [ -z $HLINK ]; then
+    echo "point \$HLINK to a valid text file"
+    sleep 1m
+    exit
+fi
+
 curl "$HLINK" >~/link.txt
 
 while read p; do
