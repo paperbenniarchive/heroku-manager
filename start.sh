@@ -26,11 +26,21 @@ while read p; do
     HMAIL1=$(echo "$PART1" | egrep -o '.*@.*\..*:' | egrep -o '[^:]*')
     HPASS1=$(echo "$PART1" | egrep -o ':.*//' | egrep -o '[^:/]*')
     HAPP1=$(echo "$PART1" | egrep -o '//.*' | egrep -o '[^/]*')
+    echo "$PART1"
+    echo "$HMAIL1"
+    echo "$HPASS1"
+    echo "$HAPP1"
 
     PART2=$(echo "$p" | egrep -o ',.*' | egrep -o '[^,]*')
     HMAIL2=$(echo "$PART2" | egrep -o '.*@.*\..*:' | egrep -o '[^:]*')
     HPASS2=$(echo "$PART2" | egrep -o ':.*//' | egrep -o '[^:/]*')
     HAPP2=$(echo "$PART2" | egrep -o '//.*' | egrep -o '[^/]*')
+    echo "$PART2"
+    echo "$HMAIL2"
+    echo "$HPASS2"
+    echo "$HAPP2"
+
+    echo "starting login processes"
 
     hlogin "$HMAIL1" "$HPASS1"
     HTIME1=$(htime "$HAPP1")
