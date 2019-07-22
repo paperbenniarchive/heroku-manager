@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+#   THIS SCRIPT IS NOT WORKING AS OF 22.JUL 2019
+
 source <(curl -s https://raw.githubusercontent.com/paperbenni/bash/master/import.sh)
 pb dialog
 
