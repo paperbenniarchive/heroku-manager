@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+###############################################################
+# This automatically balances hours between heroku instances  #
+# For questions: paperbenni@gmail.com                         #
+###############################################################
 
 cd ~/
 
@@ -6,13 +10,36 @@ source <(curl -s https://raw.githubusercontent.com/paperbenni/bash/master/import
 pb heroku/login
 pb heroku
 
-if [ -z $HLINK ]; then
-    echo "point \$HLINK to a valid text file"
-    sleep 1m
-    exit
-fi
+rm link.txt &>/dev/null
+touch link.txt
+echo "generating link.txt"
 
-curl "$HLINK" >~/link.txt
+for i in $(seq 20); do
+
+  # example ## mail1@mymail.com:  pass1//appname1,mail1@mymail.com:pass1  //appname
+  #         ##
+  # example ## $EMAIL1_1       :PASS1_1//APP1_1,EMAIL2_1          :PASS2_1//APP2_1
+
+    CEMAIL1=$(eval 'echo $EMAIL1_'"$i")
+    CPASS1=$(eval 'echo $PASS1_'"$i")
+    CAPP1=$(eval 'echo $APP1_'"$i")
+
+    CEMAIL2=$(eval 'echo $EMAIL2_'"$i")
+    CPASS2=$(eval 'echo $PASS2_'"$i")
+    CAPP2=$(eval 'echo $APP2_'"$i")
+
+    if [ -n "$CEMAIL1" ]; then
+        echo "stopped at MAIL $i"
+        break
+    fi
+
+    echo "$CEMAIL1:$CPASS1//$CAPP1,$CEMAIL2:$CPASS2,$CAPP2" >>link.txt
+
+    echo "doing $i"
+    echo "SMAIL$1"
+done
+
+cat link.txt
 
 while read p; do
     # example syntax:
