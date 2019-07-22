@@ -16,9 +16,9 @@ echo "generating link.txt"
 
 for i in $(seq 20); do
 
-  # example ## mail1@mymail.com:  pass1//appname1,mail1@mymail.com:pass1  //appname
-  #         ##
-  # example ## $EMAIL1_1       :PASS1_1//APP1_1,EMAIL2_1          :PASS2_1//APP2_1
+    # example ## mail1@mymail.com:  pass1//appname1,mail1@mymail.com:pass1  //appname
+    #         ##
+    # example ## $EMAIL1_1       :PASS1_1//APP1_1,EMAIL2_1          :PASS2_1//APP2_1
 
     CEMAIL1=$(eval 'echo $EMAIL1_'"$i")
     CPASS1=$(eval 'echo $PASS1_'"$i")
@@ -28,15 +28,13 @@ for i in $(seq 20); do
     CPASS2=$(eval 'echo $PASS2_'"$i")
     CAPP2=$(eval 'echo $APP2_'"$i")
 
-    if [ -n "$CEMAIL1" ]; then
+    echo "doing $i"
+    if [ -z "$CEMAIL1" ]; then
         echo "stopped at MAIL $i"
         break
     fi
 
-    echo "$CEMAIL1:$CPASS1//$CAPP1,$CEMAIL2:$CPASS2,$CAPP2" >>link.txt
-
-    echo "doing $i"
-    echo "SMAIL$1"
+    echo "$CEMAIL1:$CPASS1//$CAPP1,$CEMAIL2:$CPASS2//$CAPP2" >>link.txt
 done
 
 cat link.txt
